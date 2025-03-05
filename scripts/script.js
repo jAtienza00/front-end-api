@@ -14,7 +14,9 @@ window.onload = async function () {
   }
   try {
     clases(iniciado);
-  } catch (error) {}
+  } catch (error) {
+    console.error(error)
+  }
 };
 function mostrarNav() {
   let div = document.createElement("div");

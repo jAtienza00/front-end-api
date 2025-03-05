@@ -1,4 +1,3 @@
-import {url, urlUsu, urlClases} from './variables.js';
 async function clases(id) {
   let clases = document.getElementById("clases");
   let data = clases.innerHTML;
@@ -14,7 +13,6 @@ async function clases(id) {
     });
   })
 }
-
 async function buscar(event) {
   event.stopPropagation();
 
@@ -136,4 +134,61 @@ function escribirClase(json, nombres) {
                   </div>
               </div>
           </div>`;
+}
+
+function escucharClick(id) {
+  let mazo = document.querySelector(".icon-size");
+  //hacemos la animacion del carro
+  mazo.animate(
+    [
+      { transform: "rotate(10deg)" },
+      { transform: "rotate(-20deg)" },
+      { transform: "rotate(20deg)" },
+      { transform: "rotate(-20deg)" },
+      { transform: "rotate(10deg)" }
+    ], {
+    duration: 1000,
+    easing: "ease-in-out",
+  }
+  );
+  if (id !== null && id !== undefined) {
+    if (localStorage.getItem("clases") === null) {
+      let clases = "&" + id;
+      localStorage.setItem("clases", clases);
+    } else {
+      let clases = localStorage.getItem("clases");
+      let arrayClases = clases.split("&");
+      if (!arrayClases.includes(id + '')) {
+        clases += "&" + id;
+      }
+      localStorage.setItem("clases", clases);
+    }
+  }
+} 
+
+async function buscar(event = null) {
+  if (event !== null) {
+    event.stopPropagation();    
+  }
+
+  let clasesEliminar = document.querySelectorAll(".contenedor-clase");
+  clasesEliminar.forEach(obj => {
+    obj.parentElement.removeChild(obj);
+  });
+  let input = document.getElementById("buscar").value.trim().toLowerCase();
+  let clases = document.getElementById("clases");
+  let data = clases.innerHTML;
+  data += await buscarClases(input);
+  clases.innerHTML = data;
+}
+
+function escuchar() {
+  const recognition = new (window.SpeechRecognition ||
+    window.webkitSpeechRecognition)();
+  recognition.lang = "es-ES";
+  recognition.start();
+  recognition.onresult = (event) => {
+    document.getElementById("buscar").value = event.results[0][0].transcript;
+  };
+  buscar();
 }

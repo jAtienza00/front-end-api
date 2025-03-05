@@ -1,4 +1,3 @@
-import {url, urlUsu, urlClases} from './variables.js';
 async function clases(id = 0) {
     let clases = document.getElementById("clases");
     let data = clases.innerHTML;
@@ -20,6 +19,15 @@ async function buscarClases() {
     }
     clases = clases.split("&");
     let datas = await llamarClases(clases);
+    document.querySelectorAll(".eliminar").forEach(ele=>{
+        ele.addEventListener("click", async (e) => {
+            e.preventDefault();
+            id = e.target.id;
+            eliminarClase(id);
+            clases();
+        })
+
+    })
     return datas;
 }
 
@@ -55,7 +63,7 @@ async function llamarClases(clases) {
                 <div class="textoImg bg-opacity-50 bg-black rounded text-white d-flex flex-column align-items-center justify-content-center position-absolute top-0 start-0 w-100 h-100" style="opacity:0;">
                     <h4 class="mt-3">${json[nombres[i]].nombre}</h4>
                     <p>${json[nombres[i]].hora} - ${json[nombres[i]].sala}</p>
-                    <button class="btn btn-danger" onclick="eliminarClase(${json[nombres[i]].id})">Eliminar</button>
+                    <button class="btn btn-danger eliminar" id="${json[nombres[i]].id}">Eliminar</button>
                 </div>
             </div>
         </div>`;

@@ -1,4 +1,3 @@
-import { url, urlUsu, urlClases } from "./variables.js";
 window.onload = async function () {
   let iniciado = obtenerCookie("iniciado");
   if (iniciado === -1) {
@@ -12,8 +11,14 @@ window.onload = async function () {
       .getElementsByTagName("body")[0]
       .removeChild(document.getElementById("cookie-banner"));
   }
-  await clases(iniciado);
+  try {
+    clases(iniciado);
+  } catch (error) {
+    
+  } 
 };
+
+
 function mostrarNav() {
   let div = document.createElement("div");
   div.classList =
@@ -76,6 +81,19 @@ function obtenerCookie(nombre) {
   return -1;
 }
 
+function aceptarCookies() {
+  localStorage.setItem("cookies", "aceptadas");
+  document
+    .getElementsByTagName("body")[0]
+    .removeChild(document.getElementById("cookie-banner"));
+}
+
+function necesariasCookies() {
+  localStorage.setItem("cookies", "necesarias");
+  document
+    .getElementsByTagName("body")[0]
+    .removeChild(document.getElementById("cookie-banner"));
+}
 async function obtenerNombre(id) {
   try {
     const response = await fetch(urlUsu, {
@@ -99,15 +117,7 @@ async function obtenerNombre(id) {
   }
 }
 
-function escuchar() {
-  const recognition = new (window.SpeechRecognition ||
-    window.webkitSpeechRecognition)();
-  recognition.lang = "es-ES";
-  recognition.start();
-  recognition.onresult = (event) => {
-    document.getElementById("buscar").value = event.results[0][0].transcript;
-  };
-}
+
 function aceptarCookies() {
   localStorage.setItem("cookies", "aceptadas");
   document
@@ -122,23 +132,12 @@ function necesariasCookies() {
     .removeChild(document.getElementById("cookie-banner"));
 }
 
-async function clases(id) {
-  let scriptParaCargar;
-
-  if (window.location.pathname === "/eGYM.html") {
-    scriptParaCargar = import("./aparecerClases.js");
-  } else if (window.location.pathname === "/clases.html") {
-    scriptParaCargar = import("./misClases.js");
-  }
-
-  scriptParaCargar
-    .then((module) => {
-      // Aquí puedes usar las funciones del módulo importado
-      if (module.clases) {
-        module.clases(id); // Si se carga aparecerClases.js
-      }
-    })
-    .catch((err) => {
-      console.log("Error al cargar el módulo:", err);
-    });
+function escuchar() {
+  const recognition = new (window.SpeechRecognition ||
+    window.webkitSpeechRecognition)();
+  recognition.lang = "es-ES";
+  recognition.start();
+  recognition.onresult = (event) => {
+    document.getElementById("buscar").value = event.results[0][0].transcript;
+  };
 }

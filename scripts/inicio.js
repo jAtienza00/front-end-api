@@ -1,4 +1,4 @@
-import url from './redirigir';
+import url from './inicio';
 window.onload = iniciar;
 function iniciar() {
   let iniciado = obtenerCookie("iniciado");

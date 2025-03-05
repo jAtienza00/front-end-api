@@ -1,3 +1,4 @@
+import {url, urlUsu, urlClases} from './variables.js';
 window.onload = async function () {
   let iniciado = obtenerCookie("iniciado");
   if (iniciado === -1) {

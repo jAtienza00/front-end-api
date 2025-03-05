@@ -1,3 +1,4 @@
+import {url, urlUsu, urlClases} from './variables.js';
 async function clases(id = 0) {
     let clases = document.getElementById("clases");
     let data = clases.innerHTML;

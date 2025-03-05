@@ -1,8 +1,8 @@
-import {url, urlUsu, urlClases} from './variables.js';
+import { url, urlUsu, urlClases } from "./variables.js";
 window.onload = async function () {
   let iniciado = obtenerCookie("iniciado");
   if (iniciado === -1) {
-    window.location.href = "../"+ url +"index.html";
+    window.location.href = "../" + url + "index.html";
   }
   let saludo = document.getElementById("saludo");
   let nombre = await obtenerNombre(iniciado);
@@ -12,11 +12,7 @@ window.onload = async function () {
       .getElementsByTagName("body")[0]
       .removeChild(document.getElementById("cookie-banner"));
   }
-  try {
-    clases(iniciado);
-  } catch (error) {
-    console.error(error)
-  }
+  await clases(iniciado);
 };
 function mostrarNav() {
   let div = document.createElement("div");
@@ -82,14 +78,12 @@ function obtenerCookie(nombre) {
 
 async function obtenerNombre(id) {
   try {
-    const response = await fetch(urlUsu,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const response = await fetch(urlUsu, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     const json = await response.json();
     let nombres = Object.keys(json);
 
@@ -126,4 +120,25 @@ function necesariasCookies() {
   document
     .getElementsByTagName("body")[0]
     .removeChild(document.getElementById("cookie-banner"));
+}
+
+async function clases(id) {
+  let scriptParaCargar;
+
+  if (window.location.pathname === "/eGYM.html") {
+    scriptParaCargar = import("./aparecerClases.js");
+  } else if (window.location.pathname === "/clases.html") {
+    scriptParaCargar = import("./misClases.js");
+  }
+
+  scriptParaCargar
+    .then((module) => {
+      // Aquí puedes usar las funciones del módulo importado
+      if (module.clases) {
+        module.clases(id); // Si se carga aparecerClases.js
+      }
+    })
+    .catch((err) => {
+      console.log("Error al cargar el módulo:", err);
+    });
 }

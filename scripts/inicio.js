@@ -20,7 +20,7 @@ function iniciar() {
 }
 async function registrarse(values) {
   try {
-    const response = await fetch("http://127.0.0.1:8000/api/usuarios", {
+    const response = await fetch(urlUsu , {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -45,7 +45,7 @@ async function registrarse(values) {
 async function iniciarSesion(values) {
   try {
     const response = await fetch(
-      "http://127.0.0.1:8000/api/usuarios?contrasenia=" +
+      urlUsu + "?contrasenia=" +
         values["contrasenia"] +
         "&nombre=" +
         values["nombre"],

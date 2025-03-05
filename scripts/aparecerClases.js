@@ -60,7 +60,7 @@ function escucharClick(id) {
 
 async function llamarClases() {
   try {
-    const response = await fetch("http://127.0.0.1:8000/api/clases",{
+    const response = await fetch(urlClases,{
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -89,7 +89,7 @@ async function llamarClases() {
 
 async function buscarClases(input) {
   try {
-    const response = await fetch("http://127.0.0.1:8000/api/clases",{
+    const response = await fetch(urlClases,{
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -101,7 +101,7 @@ async function buscarClases(input) {
     let data = '';
     let contador = 0;
     for (let i = 0; i < nombres.length; i++) {
-      let id = String(json[nombres[i]].name);
+      let id = String(json[nombres[i]].nombres);
       if (id.toLowerCase().includes(input)) {
         let j = contador;
         if (contador % 3 === 0) {
@@ -125,11 +125,11 @@ function escribirClase(json, nombres) {
   return `<div class="col-lg-4 d-flex justify-content-center align-items-center">
               <div class="clase text-white d-inline-block bg-black shadow-lg p-3 rounded position-relative" onclick="escucharClick(${json[nombres].id})">
                   <img src="${json[nombres].imagen}" 
-                      alt="Clase ${json[nombres].name}" 
+                      alt="Clase ${json[nombres].nombre}" 
                       class="imagen img-fluid rounded top-0 left-0 w-100 h-100">
                       
                   <div class="textoImg bg-opacity-50 bg-black rounded text-white d-flex flex-column align-items-center justify-content-center position-absolute top-0 start-0 w-100 h-100" style="opacity:0;">
-                      <h4 class="mt-3">${json[nombres].name}</h4>
+                      <h4 class="mt-3">${json[nombres].nombre}</h4>
                       <p>${json[nombres].hora} - ${json[nombres].sala}</p>
                       <p>¡Apúntate haciendo click!</p>
                   </div>

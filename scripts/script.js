@@ -78,7 +78,14 @@ function obtenerCookie(nombre) {
 
 async function obtenerNombre(id) {
   try {
-    const response = await fetch("../json/usuarios.json");
+    const response = await fetch(urlUsu,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const json = await response.json();
     let nombres = Object.keys(json);
 

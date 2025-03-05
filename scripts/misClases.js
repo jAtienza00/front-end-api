@@ -24,7 +24,14 @@ async function buscarClases() {
 
 async function llamarClases(clases) {
     try {
-        let response = await fetch("../json/clases.json");
+        let response = await fetch(urlClases,
+            {
+                method: "GET",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              }
+        );
         let json = await response.json();
         let nombres = Object.keys(json);
         let data = '';
@@ -45,7 +52,7 @@ async function llamarClases(clases) {
         }" class="imagen img-fluid rounded top-0 left-0 w-100 h-100">
                     
                 <div class="textoImg bg-opacity-50 bg-black rounded text-white d-flex flex-column align-items-center justify-content-center position-absolute top-0 start-0 w-100 h-100" style="opacity:0;">
-                    <h4 class="mt-3">${json[nombres[i]].name}</h4>
+                    <h4 class="mt-3">${json[nombres[i]].nombre}</h4>
                     <p>${json[nombres[i]].hora} - ${json[nombres[i]].sala}</p>
                     <button class="btn btn-danger" onclick="eliminarClase(${json[nombres[i]].id})">Eliminar</button>
                 </div>

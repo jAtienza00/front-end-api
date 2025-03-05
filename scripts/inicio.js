@@ -1,4 +1,4 @@
-import url from './variables';
+import {url, urlUsu, urlClases} from './variables';
 window.onload = iniciar;
 function iniciar() {
   let iniciado = obtenerCookie("iniciado");

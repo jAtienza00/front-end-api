@@ -7,6 +7,4 @@ const urlClases= "https://api-egym2.up.railway.app/api/clases";
 
 const url = "front-end-api/"
 
-export {url};
-export {urlUsu};
-export {urlClases};
+export {url, urlUsu, urlClases};

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eGYM</title>
+    <link rel="shortcut icon" href="imagenes/iconos/eG.jpg" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="scripts/script.js"></script>
+    <script src="scripts/aparecerClases.js"></script>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            min-height: 100vh;
+        }
+
+        .navCollapsado button {
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .navCollapsado a {
+            text-decoration: none;
+            color: white;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        .clase:hover {
+            cursor: pointer;
+        }
+
+        footer {
+            height: 25vh;
+            clip-path: ellipse(100% 60% at 50% 100%);
+        }
+
+        .footImg {
+            width: 30px;
+        }
+
+        .icon-size {
+            width: 70px;
+            height: auto;
+        }
+
+        @keyframes agitar {
+            0% {
+                transform: rotate(10deg);
+            }
+        
+            25% {
+                transform: rotate(-20deg);
+            }
+        
+            50% {
+                transform: rotate(20deg);
+            }
+        
+            75% {
+                transform: rotate(-20deg);
+            }
+        
+            100% {
+                transform: rotate(10deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .icon-size {
+                width: 50px;
+            }
+        }
+    </style>
+</head>
+
+<body class="d-flex flex-column text-white">
+    <!-- Header -->
+    <header class="bg-black text-white p-3 shadow-lg d-flex justify-content-between align-items-center">
+        <a id="eGYM.html" class="h2 link-light link-underline link-underline-opacity-0" onclick="redirigir(event)"><h1>eGYM</h1></a>
+
+        <!-- Buscador con botón de voz -->
+        <div class="search-container d-flex align-items-center justify-content-around">
+            <div action="" class="d-flex align-items-center">
+                <input type="text" id="buscar" class="form-control me-2" placeholder="Buscar...">
+                <button class="btn btn-outline-light" onclick="escuchar()">
+                    🎤
+                </button>
+                <button class="btn btn-light" width="5%" onclick="event.stopPropagation();buscar(event)">
+                    🔎
+                </button>
+            </div>
+        </div>
+
+        <nav>
+            <button class="navbar-toggler" onclick="mostrarNav()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-list"
+                    viewBox="0 0 16 16">
+                    <path d="M2 12h12v2H2v-2zm0-4h12v2H2V8zm0-4h12v2H2V4z" />
+                </svg>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="nav">
+                    <li class="nav-item"><a id="eGYM.html" class="nav-link" onclick="redirigir(event)">Inicio</a></li>
+                    <li class="nav-item"><a id="clases.html" class="nav-link" onclick="redirigir(event)">Tus clases</a></li>
+                    <li class="nav-item"><a id="masGimnasios.html" class="nav-link" onclick="redirigir(event)">Más Gimnasio</a></li>
+                    <li class="nav-item"><a id="sobreNosotros.html" class="nav-link" onclick="redirigir(event)">Sobre nosotros</a></li>
+                    <li class="nav-item"><a id="cerrarSesion.html" class="nav-link" onclick="redirigir(event)">Cerrar sesion</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+
+    <!-- Body -->
+    <div class="bg-white">
+        <div class="text-end my-1">
+            <a id="clases.html"  onclick="redirigir(event)"><img src="imagenes/iconos/clases.png" class="img-fluid rounded icon-size" alt="Clases"
+                    width="3%"></a>
+        </div>
+        <main class="container-fluid my-5 px-5 d-flex">
+            <div class="row">
+                <!-- Clases del día -->
+                <div class="col-lg-8" id="clases">
+                    <h2 class="text-dark" id="saludo">¡Hola, </h2>
+                    <h3 class="text-dark">Clases del día:</h3>
+                </div>
+
+                <!-- Ofertas -->
+                <div class="col-lg-4 align-self-center" id="ofertas">
+                    <h3 class="text-dark">Novedades:</h3>
+                    <div id="carouselOfertas" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="imagenes/ofertas/futbol.jpg" class="d-block w-auto rounded" alt="Oferta 1">
+                                <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+                                    <h5>Sorteo</h5>
+                                    <p>Apuntate a nuestrto sorteo por ver el DERBI madrileño.</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="imagenes/ofertas/maraton.jpg" class="d-block w-auto rounded" alt="Oferta 2">
+                                <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+                                    <h5>Unete</h5>
+                                    <p>Unete a nuestra maraton solidaria y ayude a los más necesitados.</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="imagenes/ofertas/pista.jpg" class="d-block w-auto rounded" alt="Oferta 3">
+                                <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+                                    <h5>Sumate</h5>
+                                    <p>Sumate al equipo de atletismo.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselOfertas"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Anterior</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselOfertas"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Siguiente</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <!-- Footer -->
+    <footer class="d-flex justify-content-center align-items-center pt-4 mb-0 bg-black">
+        <a href="#" class="mx-3"><img src="imagenes/iconos/x.png" alt="X" class="footImg"></a>
+        <a href="#" class="mx-3"><img src="imagenes/iconos/tiktok.png" alt="TikTok" class="footImg"></a>
+        <p>&copy; 2025 eGYM</p>
+        <a href="#" class="mx-3"><img src="imagenes/iconos/instagram.png" alt="Instagram" class="footImg"></a>
+        <a href="#" class="mx-3"><img src="imagenes/iconos/f.png" alt="Facebook" class="footImg"></a>
+    </footer>
+    <!-- Banner de Cookies -->
+    <div id="cookie-banner" class="d-flex justify-content-center align-items-center p-5 w-100 start-0 bottom-0 position-fixed text-center bg-secondary">
+        <p class="mb-0 me-3">Usamos cookies para mejorar tu experiencia. ¿Aceptas todas?</p>
+        <button class="btn btn-primary me-2" onclick="aceptarCookies()">Aceptar</button>
+        <button class="btn btn-light" onclick="necesariasCookies()">Solo las necesarias</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

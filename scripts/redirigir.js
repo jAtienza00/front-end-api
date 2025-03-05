@@ -1,4 +1,4 @@
 function redirigir(event) {
     id = event.target.id;
-    window.href = url + id;
+    window.location.href = url + id;
 }

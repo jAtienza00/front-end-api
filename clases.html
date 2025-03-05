@@ -6,56 +6,28 @@
     <title>Clases eGYM</title>
     <link rel="shortcut icon" href="imagenes/iconos/eG.jpg" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="scripts/variables.js"></script>
     <script src="scripts/script.js"></script>
     <script src="scripts/misClases.js"></script>
     <style>
         body {
             font-family: Arial, Helvetica, sans-serif;
-            background-color: #ffffffd3;
             min-height: 100vh;
         }
 
         #cookie-banner {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: #6c757d; /* Gris Bootstrap */
-            color: white;
-            text-align: center;
             z-index: 1000;
         }
 
-        .navCollapsado {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 50%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro */
-            color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items:center;
-            z-index: 9999; /* Se asegura de que el div esté por encima de todo */
-        }
         .navCollapsado button {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            padding: 5px;
-            background-color: red;
-            color: white;
-            border: none;
             cursor: pointer;
             font-size: 20px;
         }
+
         .navCollapsado a {
             text-decoration: none;
             color: white;
         }
+
         main {
             flex: 1;
         }
@@ -64,29 +36,10 @@
         }
         footer {
             height: 25vh;
-            margin-bottom: 0px;
             clip-path: ellipse(100% 60% at 50% 100%);
         }
         .footImg {
             width: 30px;
-        }
-        .class-card {
-            background-color: black;
-            color: white;
-            position: relative;
-            display:inline-block;
-        }
-
-        .imagen {
-            border-radius: 10px;
-            border: 5px solid black;
-            object-fit: scale-down;
-        }
-
-        .textoImg{
-            position: absolute;
-            bottom: 50%;
-            right: 1rem;
         }
         .icon-size {
             width: 70px;
@@ -100,9 +53,9 @@
         }
     </style>
 </head>
-<body>
+<body class="d-flex flex-column text-white">
     <header class="bg-black text-white p-3 shadow-lg d-flex justify-content-between align-items-center">
-        <a href="eGYM.html" class="h2 link-light link-underline link-underline-opacity-0"><h1>eGYM</h1></a>
+        <a id="eGYM.html" class="h2 link-light link-underline link-underline-opacity-0"><h1>eGYM</h1></a>
 
         <nav>
             <button class="navbar-toggler" onclick="mostrarNav()">
@@ -112,11 +65,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="nav">
-                    <li class="nav-item"><a href="eGYM.html" class="nav-link text-white">Inicio</a></li>
-                    <li class="nav-item"><a href="clases.html" class="nav-link text-white">Tus clases</a></li>
-                    <li class="nav-item"><a href="masGimnasios.html" class="nav-link text-white">Más Gimnasio</a></li>
-                    <li class="nav-item"><a href="sobreNosotros.html" class="nav-link text-white">Sobre nosotros</a></li>
-                    <li class="nav-item"><a href="cerrarSesion.html" class="nav-link text-white">Cerrar sesion</a></li>
+                    <li class="nav-item"><a id="eGYM.html" class="nav-link" onclick="redirigir(event)">Inicio</a></li>
+                    <li class="nav-item"><a id="clases.html" class="nav-link" onclick="redirigir(event)">Tus clases</a></li>
+                    <li class="nav-item"><a id="masGimnasios.html" class="nav-link" onclick="redirigir(event)">Más Gimnasio</a></li>
+                    <li class="nav-item"><a id="sobreNosotros.html" class="nav-link" onclick="redirigir(event)">Sobre nosotros</a></li>
+                    <li class="nav-item"><a id="cerrarSesion.html" class="nav-link" onclick="redirigir(event)">Cerrar sesion</a></li>
                 </ul>
             </div>
         </nav>
@@ -180,7 +133,7 @@
     </footer>
     
     <!-- Banner de Cookies -->
-    <div id="cookie-banner" class="d-flex justify-content-center align-items-center p-5">
+    <div id="cookie-banner" class="d-flex justify-content-center align-items-center p-5 w-100 start-0 bottom-0 position-fixed text-center bg-secondary">
         <p class="mb-0 me-3">Usamos cookies para mejorar tu experiencia. ¿Aceptas todas?</p>
         <button class="btn btn-primary me-2" onclick="aceptarCookies()">Aceptar</button>
         <button class="btn btn-light" onclick="necesariasCookies()">Solo las necesarias</button>

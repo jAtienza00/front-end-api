@@ -1,0 +1,40 @@
+[
+    {
+        "id": 0,
+        "nombre": "Yoga",
+        "descripcion": "Yoga is a physical, mental, and spiritual",
+        "hora": "10:00AM",
+        "sala": 1,
+        "imagen": "imagenes/clases/yoga.jpg"
+    },
+    {
+        "nombre": "Crossfit",
+        "hora": "12:00PM",
+        "sala": 2,
+        "imagen": "imagenes/clases/crossfit.jpg"
+    },
+    {
+        "nombre": "Boxeo",
+        "hora": "6:00PM",
+        "sala": 2,
+        "imagen": "imagenes/clases/boxeo.jpg"
+    },
+    {
+        "nombre": "Baile",
+        "hora": "18:00",
+        "sala": 1,
+        "imagen": "imagenes/clases/baile.jpg"
+    },
+    {
+        "nombre": "Musculacion",
+        "hora": "19:00",
+        "sala": 2,
+        "imagen": "imagenes/clases/musculacion.jpg"
+    },
+    {
+        "nombre": "Natacion",
+        "hora": "11:00",
+        "sala": 3,
+        "imagen": "imagenes/clases/natacion.jpg"
+    }
+]

@@ -33,7 +33,7 @@ async function registrarse(values) {
     let json = await response.json();
     if (json["creado"] === true) {
       alert("registro exitoso");
-      window.location.href = "../"+url+"index.html";
+      window.location.href = "../index.html";
       return;
     }
     error("registrandote");
@@ -59,7 +59,7 @@ async function iniciarSesion(values) {
     data = await response.json();
     if (data["encontrado"] === true) {
         document.cookie = `iniciado=${data.id}; path=/; max-age=${60 * 60 * 24}`;
-      window.location.href = "../"+url+"eGYM.html";
+      window.location.href = "../eGYM.html";
       return;
     }
     error("registrandote");

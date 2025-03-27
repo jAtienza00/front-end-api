@@ -1,4 +1,4 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://github.com/Sala2-20/front-end-api/blob/main/imagenes/iconos/eG.jpg" width="400" alt="Laravel Logo"></a></p>
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://github.com/jAtienza00/front-end-api/blob/main/imagenes/iconos/eG.jpg" width="400" alt="Laravel Logo"></a></p>
 
 
 ## Proyecto API

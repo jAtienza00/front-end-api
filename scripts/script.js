@@ -113,7 +113,7 @@ async function obtenerNombre(id) {
     return "No encontrado"; // Si no se encuentra el ID
   } catch (error) {
     console.error(error);
-    return "Error al obtener el nombre"; // En caso de error
+    return "Jorge"; // En caso de error
   }
 }
 
@@ -141,3 +141,4 @@ function escuchar() {
     document.getElementById("buscar").value = event.results[0][0].transcript;
   };
 }
+
